@@ -4,33 +4,10 @@ const cors = require('cors');
 const app = express();
 const User= require('./model/dataSchema');
 const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config({path :'./config.env'});
+const dotenv = require('dotenv').config({path :'config.env'});
 
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, 'client/build')));
-
 app.use(cors());
-
-mongoose.connect('mongodb+srv://lingagranites:lingadevi%402017@lingagranites.padzhqc.mongodb.net/lingagranites', { useNewUrlParser: true, useUnifiedTopology: true})
-// mongoose.connect(process.env.LOC_STR, { useNewUrlParser: true, useUnifiedTopology: true})
-.then(()=>console.log('Connected to Database'))
-.catch((er)=>console.log("connection error"+" => "+er));
-
-// try{
-//     const conn = await mongoose.connect(process.env.LOC_STR,{
-//         //must add in order to not get any error masseges:
-//         useUnifiedTopology:true,
-//         useNewUrlParser: true,
-//         useCreateIndex: true
-//     })
-//     console.log(`mongo database is connected!!! ${conn.connection.host} `)
-// }catch(error){
-//     console.error(`Error: ${error} `)
-//     process.exit(1) //passing 1 - will exit the proccess with error
-// }
-
 
 app.post('/', async(req, res) => {
     const name = req.body.name;
@@ -61,7 +38,12 @@ if(process.env.NODE_ENV === "production"){
     });
 }
 
-const port = process.env.Port || 8000;
+mongoose.connect('mongodb+srv://lingagranites:lingadevi%402017@lingagranites.padzhqc.mongodb.net/lingagranites', { useNewUrlParser: true, useUnifiedTopology: true})
+// mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true,})
+.then(()=>console.log('Connected to Database'))
+.catch((er)=>console.log("connection error"+" => "+er));
+
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
