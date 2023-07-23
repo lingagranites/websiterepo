@@ -62,10 +62,10 @@ app.use(serveReactApp);
 //     });
 // }
 
-// const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 const host = '15.206.124.179'
 
-app.listen(host, () => {
+app.listen(port,host, () => {
     console.log(`Server started on port ${port}`);
 })
 
