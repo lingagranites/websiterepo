@@ -42,6 +42,19 @@ app.post('/insert', async(req, res) => {
     }
 });
 
+function serveReactApp(req, res, next) {
+  const clientAppPath = path.join(__dirname, '../client/build');
+  const indexPath = path.resolve(__dirname, '../client/build/index.html');
+
+  express.static(clientAppPath)(req, res, (err) => {
+    if (err) {
+      res.sendFile(indexPath);
+    }
+  });
+}
+
+app.use(serveReactApp);
+
 // if(process.env.NODE_ENV === "production"){
 //     app.use(express.static(path.join(__dirname, '../client/build')));
 //     app.get("*/",(req,res)=>{
@@ -49,22 +62,12 @@ app.post('/insert', async(req, res) => {
 //     });
 // }
 
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
+const host = '15.206.124.179'
 
-app.listen(port, () => {
+app.listen(host, () => {
     console.log(`Server started on port ${port}`);
 })
 
-function serveReactApp(req, res, next) {
-    const clientAppPath = path.join(__dirname, '../client/build');
-    const indexPath = path.resolve(__dirname, '../client/build/index.html');
-  
-    express.static(clientAppPath)(req, res, (err) => {
-      if (err) {
-        res.sendFile(indexPath);
-      }
-    });
-  }
 
-  app.use(serveReactApp);
   
