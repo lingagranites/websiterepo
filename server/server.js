@@ -62,7 +62,7 @@ app.use(serveReactApp);
 //     });
 // }
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 80;
 
 
 app.listen(port,() => {
