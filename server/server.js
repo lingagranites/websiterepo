@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const User= require('./model/dataSchema');
 const path = require('path');
+const http = require('http');
 
 const dotenv = require('dotenv').config({path :'config.env'});
 
@@ -62,12 +63,23 @@ app.use(serveReactApp);
 //     });
 // }
 
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 3000;
 
 
-app.listen(port,() => {
-    console.log(`Server started on port ${port}`);
-})
+// app.listen(port,() => {
+//     console.log(`Server started on port ${port}`);
+// })
 
+const ipAddress = '15.206.124.179';
 
+// Create an HTTP server with your Express app
+const server = http.createServer(app);
+
+// Listen on port 80 for HTTP or port 443 for HTTPS
+const port = process.env.PORT || 80;
+
+// Start the server
+server.listen(port, ipAddress, () => {
+  console.log(`Server running on ${ipAddress}:${port}`);
+});
   
