@@ -70,16 +70,23 @@ app.use(serveReactApp);
 //     console.log(`Server started on port ${port}`);
 // })
 
+// const ipAddress = '0.0.0.0';
+// const server = http.createServer(app);
+// const port = process.env.PORT || 3000;
+// server.listen(port, ipAddress, () => {
+//   console.log(`Server running on ${ipAddress}:${port}`);
+// });
+  
+// Set the IP address you want to listen on (e.g., '0.0.0.0' for all available network interfaces)
 const ipAddress = '0.0.0.0';
+
+// Determine the port based on whether the app is running in a secure environment (HTTPS) or not (HTTP)
+const port = process.env.PORT || (process.env.NODE_ENV === 'production' ? 80 : 3000);
 
 // Create an HTTP server with your Express app
 const server = http.createServer(app);
-
-// Listen on port 80 for HTTP or port 443 for HTTPS
-const port = process.env.PORT || 3000;
 
 // Start the server
 server.listen(port, ipAddress, () => {
   console.log(`Server running on ${ipAddress}:${port}`);
 });
-  
