@@ -32,7 +32,7 @@ const ContactForm = () => {
         message : message
       } 
 
-        axios.post('http://localhost:3000', data, {
+        axios.post('http://localhost:3000/insert', data, {
         headers : {
           "Content-Type" : "application/json"
         }
@@ -40,10 +40,9 @@ const ContactForm = () => {
       }).then((res)=>{   
         console.log(res);        
         window.alert('Message sent successfully!');
-        console.log("clr")
        
-      }).catch(()=>{
-        // console.log(err);
+      }).catch((err)=>{
+        console.log(err);
         window.alert('Error occurs in sending Message...!!!');
       });
 
