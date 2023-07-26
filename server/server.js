@@ -76,8 +76,8 @@ const httpServer = http.createServer(app);
 
 // HTTPS server - Requires SSL certificates (key and certificate)
 const options = {
-  key: fs.readFileSync('/private.key'),
-  cert: fs.readFileSync('/certificate.crt'),
+  key: fs.readFileSync('./private.key'),
+  cert: fs.readFileSync('./certificate.crt'),
 };
 const httpsServer = https.createServer(options, app);
 
