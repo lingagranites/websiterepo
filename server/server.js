@@ -12,8 +12,8 @@ const dotenv = require('dotenv').config({path :'config.env'});
 app.use(express.json());
 app.use(cors());
 
-// mongoose.connect('mongodb+srv://lingagranites:lingadevi%402017@lingagranites.padzhqc.mongodb.net/lingagranites', { useNewUrlParser: true, useUnifiedTopology: true})
-mongoose.connect(process.env.DB_URI)
+mongoose.connect('mongodb+srv://lingagranites:lingadevi%402017@lingagranites.padzhqc.mongodb.net/lingagranites', { useNewUrlParser: true, useUnifiedTopology: true})
+// mongoose.connect(process.env.DB_URI)
 .then(()=>console.log('Connected to Database'))
 .catch((er)=>console.log("connection error"+" => "+er));
 
