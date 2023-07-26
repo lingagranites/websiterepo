@@ -5,6 +5,8 @@ const app = express();
 const User= require('./model/dataSchema');
 const path = require('path');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');
 
 const dotenv = require('dotenv').config({path :'config.env'});
 
@@ -55,38 +57,36 @@ function serveReactApp(req, res, next) {
 }
 
 app.use(serveReactApp);
-
-// if(process.env.NODE_ENV === "production"){
-//     app.use(express.static(path.join(__dirname, '../client/build')));
-//     app.get("*/",(req,res)=>{
-//         res.sendFile(path.resolve(__dirname,"../client/build/index.html"));
-//     });
-// }
-
-// const port = process.env.PORT || 3000;
-
-
-// app.listen(port,() => {
-//     console.log(`Server started on port ${port}`);
-// })
-
+  
 // const ipAddress = '0.0.0.0';
+
+// const port = process.env.PORT || (process.env.NODE_ENV === 'production' ? 80 : 3000);
+
 // const server = http.createServer(app);
-// const port = process.env.PORT || 3000;
+
 // server.listen(port, ipAddress, () => {
 //   console.log(`Server running on ${ipAddress}:${port}`);
 // });
-  
-// Set the IP address you want to listen on (e.g., '0.0.0.0' for all available network interfaces)
-const ipAddress = '0.0.0.0';
 
-// Determine the port based on whether the app is running in a secure environment (HTTPS) or not (HTTP)
-const port = process.env.PORT || (process.env.NODE_ENV === 'production' ? 80 : 3000);
 
-// Create an HTTP server with your Express app
-const server = http.createServer(app);
+const httpPort = 80; // Default HTTP port
+const httpsPort = 443; // Default HTTPS port
 
-// Start the server
-server.listen(port, ipAddress, () => {
-  console.log(`Server running on ${ipAddress}:${port}`);
+// HTTP server
+const httpServer = http.createServer(app);
+
+// HTTPS server - Requires SSL certificates (key and certificate)
+const options = {
+  key: fs.readFileSync('/path/to/your/privatekey.pem'),
+  cert: fs.readFileSync('/path/to/your/certificate.pem'),
+};
+const httpsServer = https.createServer(options, app);
+
+// Start both HTTP and HTTPS servers
+httpServer.listen(httpPort, () => {
+  console.log(`HTTP server listening on port ${httpPort}`);
+});
+
+httpsServer.listen(httpsPort, () => {
+  console.log(`HTTPS server listening on port ${httpsPort}`);
 });
