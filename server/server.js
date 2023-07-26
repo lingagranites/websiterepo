@@ -76,8 +76,9 @@ const httpServer = http.createServer(app);
 
 // HTTPS server - Requires SSL certificates (key and certificate)
 // HTTPS server - Requires SSL certificates (key and certificate)
-const keyFilePath = './private.key';
-const certFilePath = './certificate.crt';
+const keyFilePath = path.join(__dirname, 'private.key');
+const certFilePath = path.join(__dirname, 'certificate.crt');
+
 
 if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
   console.error('ERROR: SSL certificate files not found.');
