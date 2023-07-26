@@ -75,11 +75,24 @@ const httpsPort = 443; // Default HTTPS port
 const httpServer = http.createServer(app);
 
 // HTTPS server - Requires SSL certificates (key and certificate)
+// HTTPS server - Requires SSL certificates (key and certificate)
+const keyFilePath = './private.key';
+const certFilePath = './certificate.crt';
+
+if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
+  console.error('ERROR: SSL certificate files not found.');
+  process.exit(1);
+}
+
 const options = {
-  key: fs.readFileSync('./private.key'),
-  cert: fs.readFileSync('./certificate.crt'),
+  key: fs.readFileSync(keyFilePath),
+  cert: fs.readFileSync(certFilePath),
 };
+
 const httpsServer = https.createServer(options, app);
+
+// Rest of your code...
+
 
 // Start both HTTP and HTTPS servers
 httpServer.listen(httpPort, () => {
