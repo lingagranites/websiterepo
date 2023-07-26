@@ -5,9 +5,8 @@ const app = express();
 const User= require('./model/dataSchema');
 const path = require('path');
 const http = require('http');
-// const https = require('https');
+const https = require('https');
 const fs = require('fs');
-
 const dotenv = require('dotenv').config({path :'config.env'});
 
 app.use(express.json());
@@ -70,23 +69,23 @@ app.use(serveReactApp);
 
 
 const httpPort = 80; // Default HTTP port
-// const httpsPort = 443; // Default HTTPS port
+const httpsPort = 443; // Default HTTPS port
 
 // HTTP server
 const httpServer = http.createServer(app);
 
 // HTTPS server - Requires SSL certificates (key and certificate)
-// const options = {
-//   key: fs.readFileSync('/path/to/your/privatekey.pem'),
-//   cert: fs.readFileSync('/path/to/your/certificate.pem'),
-// };
-// const httpsServer = https.createServer(options, app);
+const options = {
+  key: fs.readFileSync('/private.key'),
+  cert: fs.readFileSync('/certificate.crt'),
+};
+const httpsServer = https.createServer(options, app);
 
 // Start both HTTP and HTTPS servers
 httpServer.listen(httpPort, () => {
   console.log(`HTTP server listening on port ${httpPort}`);
 });
 
-// httpsServer.listen(httpsPort, () => {
-//   console.log(`HTTPS server listening on port ${httpsPort}`);
-// });
+httpsServer.listen(httpsPort, () => {
+  console.log(`HTTPS server listening on port ${httpsPort}`);
+});
