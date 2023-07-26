@@ -71,26 +71,24 @@ app.use(serveReactApp);
 const httpPort = 3000; // Default HTTP port
 const httpsPort = 443; // Default HTTPS port
 
-// HTTP server
+
 const httpServer = http.createServer(app);
 
-// HTTPS server - Requires SSL certificates (key and certificate)
-// HTTPS server - Requires SSL certificates (key and certificate)
-const keyFilePath = path.join(__dirname, 'private.key');
-const certFilePath = path.join(__dirname, 'certificate.crt');
+// const keyFilePath = path.join(__dirname, 'private.key');
+// const certFilePath = path.join(__dirname, 'certificate.crt');
 
 
-if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
-  console.error('ERROR: SSL certificate files not found.');
-  process.exit(1);
-}
+// if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
+//   console.error('ERROR: SSL certificate files not found.');
+//   process.exit(1);
+// }
 
-const options = {
-  key: fs.readFileSync(keyFilePath),
-  cert: fs.readFileSync(certFilePath),
-};
+// const options = {
+//   key: fs.readFileSync(keyFilePath),
+//   cert: fs.readFileSync(certFilePath),
+// };
 
-const httpsServer = https.createServer(options, app);
+// const httpsServer = https.createServer(options, app);
 
 // Rest of your code...
 
@@ -100,6 +98,6 @@ httpServer.listen(httpPort, () => {
   console.log(`HTTP server listening on port ${httpPort}`);
 });
 
-httpsServer.listen(httpsPort, () => {
-  console.log(`HTTPS server listening on port ${httpsPort}`);
-});
+// httpsServer.listen(httpsPort, () => {
+//   console.log(`HTTPS server listening on port ${httpsPort}`);
+// });
