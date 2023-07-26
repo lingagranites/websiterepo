@@ -68,7 +68,7 @@ app.use(serveReactApp);
 // });
 
 
-const httpPort = 80; // Default HTTP port
+const httpPort = 3000; // Default HTTP port
 const httpsPort = 443; // Default HTTPS port
 
 // HTTP server
