@@ -71,8 +71,8 @@ body {
 }
 @media (orientation: portrait) {
   .nav_intro_overall {
-    height: 96vh;   
-    width: 98vw; 
+    height: 100vh;   
+    width: 100%; 
     margin: 0;
     box-shadow: none;
     border-radius: none;
@@ -98,12 +98,22 @@ body {
       left: 4vw;  
       transition: transform .5s;
     }
+    @media (orientation: portrait) {
+      .navbar svg {
+        left: 0;
+      }
+    }
     .navbar h1{
       font-size: 25px;
       position: relative;
       left: 5vw;
       letter-spacing: 0.20vw;
       z-index: 7;
+    }
+    @media (orientation: portrait) {
+      .navbar h1{
+        left: 0;
+      }
     }
 
     /* Intro Container */
