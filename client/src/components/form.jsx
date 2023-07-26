@@ -42,8 +42,8 @@ const ContactForm = () => {
         window.alert('Message sent successfully!');
         console.log("clr")
        
-      }).catch((err)=>{
-        console.log(err);
+      }).catch(()=>{
+        // console.log(err);
         window.alert('Error occurs in sending Message...!!!');
       });
 
