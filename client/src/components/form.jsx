@@ -32,7 +32,7 @@ const ContactForm = () => {
         message : message
       } 
 
-        axios.post('http://localhost:3000/insert', data, {
+        axios.post('http://3.109.49.36:3000/insert', data, {
         headers : {
           "Content-Type" : "application/json"
         }
