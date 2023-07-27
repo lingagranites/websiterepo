@@ -12,7 +12,7 @@ const dotenv = require('dotenv').config({path :'config.env'});
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://linga:I7LyK2vGU7Ew2bCj@linga.y32tmpd.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://linga:I7LyK2vGU7Ew2bCj@linga.y32tmpd.mongodb.net/clientdata', { useNewUrlParser: true, useUnifiedTopology: true})
 // mongoose.connect(process.env.DB_URI)
 .then(()=>console.log('Connected to Database'))
 .catch((er)=>console.log("connection error"+" => "+er));
