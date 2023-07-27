@@ -68,7 +68,7 @@ app.use(serveReactApp);
 // });
 
 
-const httpPort = 3000; // Default HTTP port
+const httpPort = 80; // Default HTTP port
 const httpsPort = 443; // Default HTTPS port
 
 
@@ -90,10 +90,6 @@ const httpServer = http.createServer(app);
 
 // const httpsServer = https.createServer(options, app);
 
-// Rest of your code...
-
-
-// Start both HTTP and HTTPS servers
 httpServer.listen(httpPort, () => {
   console.log(`HTTP server listening on port ${httpPort}`);
 });

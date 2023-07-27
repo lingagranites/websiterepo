@@ -56,7 +56,6 @@ body {
 /* nav_intro_overall */
 .nav_intro_overall{
   height: 96vh;
-
   width: 98vw;
   margin: 2vh 1vw 2vh 1vw;
   /* background-color: black; */
@@ -75,7 +74,7 @@ body {
     width: 100%; 
     margin: 0;
     box-shadow: none;
-    border-radius: none;
+    border-radius:0;
   }
 }
 
