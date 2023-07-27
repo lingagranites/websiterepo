@@ -12,7 +12,7 @@ const dotenv = require('dotenv').config({path :'config.env'});
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://lingagranites:lingadevi%402017@lingagranites.padzhqc.mongodb.net/lingagranites', { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://linga:I7LyK2vGU7Ew2bCj@linga.y32tmpd.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true})
 // mongoose.connect(process.env.DB_URI)
 .then(()=>console.log('Connected to Database'))
 .catch((er)=>console.log("connection error"+" => "+er));
@@ -68,32 +68,38 @@ app.use(serveReactApp);
 // });
 
 
-const httpPort = 80; // Default HTTP port
-const httpsPort = 443; // Default HTTPS port
+// const httpPort = 80; // Default HTTP port
+// const httpsPort = 443; // Default HTTPS port
 
 
-const httpServer = http.createServer(app);
+// const httpServer = http.createServer(app);
 
-const keyFilePath = path.join(__dirname, 'private.key');
-const certFilePath = path.join(__dirname, 'certificate.crt');
+// const keyFilePath = path.join(__dirname, 'private.key');
+// const certFilePath = path.join(__dirname, 'certificate.crt');
 
 
-if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
-  console.error('ERROR: SSL certificate files not found.');
-  process.exit(1);
-}
+// if (!fs.existsSync(keyFilePath) || !fs.existsSync(certFilePath)) {
+//   console.error('ERROR: SSL certificate files not found.');
+//   process.exit(1);
+// }
 
-const options = {
-  key: fs.readFileSync(keyFilePath),
-  cert: fs.readFileSync(certFilePath),
-};
+// const options = {
+//   key: fs.readFileSync(keyFilePath),
+//   cert: fs.readFileSync(certFilePath),
+// };
 
-const httpsServer = https.createServer(options, app);
+// const httpsServer = https.createServer(options, app);
 
-httpServer.listen(httpPort, () => {
-  console.log(`HTTP server listening on port ${httpPort}`);
-});
+// httpServer.listen(httpPort, () => {
+//   console.log(`HTTP server listening on port ${httpPort}`);
+// });
 
-httpsServer.listen(httpsPort, () => {
-  console.log(`HTTPS server listening on port ${httpsPort}`);
+// httpsServer.listen(httpsPort, () => {
+//   console.log(`HTTPS server listening on port ${httpsPort}`);
+// });
+
+const port = 3000; // Change this to your desired port number
+
+app.listen(port, () => {
+  console.log(`Server running on ${port}`);
 });
