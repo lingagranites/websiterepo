@@ -98,7 +98,7 @@ app.use(serveReactApp);
 //   console.log(`HTTPS server listening on port ${httpsPort}`);
 // });
 
-const port = 3000; // Change this to your desired port number
+const port = 80; // Change this to your desired port number
 
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
