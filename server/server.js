@@ -68,11 +68,11 @@ app.use(serveReactApp);
 // });
 
 
-// const httpPort = 80; // Default HTTP port
+const httpPort = 80; // Default HTTP port
 // const httpsPort = 443; // Default HTTPS port
 
 
-// const httpServer = http.createServer(app);
+const httpServer = http.createServer(app);
 
 // const keyFilePath = path.join(__dirname, 'private.key');
 // const certFilePath = path.join(__dirname, 'certificate.crt');
@@ -90,16 +90,16 @@ app.use(serveReactApp);
 
 // const httpsServer = https.createServer(options, app);
 
-// httpServer.listen(httpPort, () => {
-//   console.log(`HTTP server listening on port ${httpPort}`);
-// });
+httpServer.listen(httpPort, () => {
+  console.log(`HTTP server listening on port ${httpPort}`);
+});
 
 // httpsServer.listen(httpsPort, () => {
 //   console.log(`HTTPS server listening on port ${httpsPort}`);
 // });
 
-const port = 80; // Change this to your desired port number
+// const port = 3000;
 
-app.listen(port, () => {
-  console.log(`Server running on ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server running on ${port}`);
+// });
