@@ -10,6 +10,10 @@ const Preloader = () => {
 
     window.addEventListener('load', handleLoad);
 
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 10000);
+
     return () => {
       window.removeEventListener('load', handleLoad);
     };
