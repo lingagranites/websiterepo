@@ -53,17 +53,12 @@ function App() {
                 <img className='moon' src={moon} alt='moon'/>   
             </div>  
             <div className='para_overall_container'>
-                {/* <img src={banner} alt='BANNER'/> */}
-                {/* <p>
+                <p>
                     <b>Linga Granites</b> is one of the granite manufacturers from Salem, Tamilnadu.
                     We have 30+ years of Experience in the granite field.
-                
-                    
                     It is used in interiors, especially kitchen countertops, Bathroom counters, Interior flooring, stair steps and risers, Interior wall coverings, tables, and coffee tables. 
                     Granite truly Timeless and Durable building material that has been used for centuries in Ancient Temples and Architecture.
-                </p> */}
-                {/* The use of granite in the Interiors and Exterior of living areas is relatively high.  */}
-                {/* The desire to use a clean or Hygienic building material and obtain a natural appearance.  */}
+                </p>
             </div>             
         </div>
       </div>
