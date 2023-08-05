@@ -75,6 +75,9 @@ body {
     margin: 0;
     box-shadow: none;
     border-radius:0;
+    background-image:url(./homesrc/stars-space.gif);
+    background-size: auto;
+    background-position: center;
   }
 }
 
