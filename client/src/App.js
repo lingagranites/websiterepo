@@ -68,9 +68,9 @@ function App() {
 
         <div className="granite_content_sub_div_text">
             <h1>ORIGIN OF GRANITES</h1>
-            <p>Granite is a type of igneous rock that is composed primarily of quartz , feldspar and mica .
-               It is formed through the slow cooling and solidification of molten magma beneath the Earth surface . 
-               The mineral composition of granite can very depending on the specific location where it is Mined .
+            <p>Granite is a type of igneous rock that is composed primarily of quartz , feldspar and mica.
+               It is formed through the slow cooling and solidification of molten magma beneath the Earth surface. 
+               The mineral composition of granite can very depending on the specific location where it is Mined.
                Their natural and original  textures give the rooms an uniqueness and elegance. 
                Its outstanding Hardness, Versatility, Durability and Resistance to abrasion make this the perfect material for outdoor and indoor use.</p>
             <button className="gallery_button" >

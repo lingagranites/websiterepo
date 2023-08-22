@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ContactForm = () => {
-  const[username, setUsername] = useState('');
-  const[number, setNumber] = useState(0);
-  const[email, setEmail] = useState('');
-  const[message, setMessage] = useState('');
+  const [username, setUsername] = useState('');
+  const [number, setNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [responseText, setResponseText] = useState('');
+  const [responseColor, setResponseColor] = useState('');
 
   const [input, setInput] = useState({
-    name: '',
-    number: '',
-    email: '',
-    message: ''
-  });
+        name: '',
+        number: '',
+        email: '',
+        message: ''
+      });
 
   const handleInputChange = (e) => {
     setInput({
@@ -21,34 +23,55 @@ const ContactForm = () => {
     });
   };
 
-
-  function handleSubmit(e){
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-      let data = {
-        name : username,
-        number : number,
-        email : email,
-        message : message
-      } 
+    if (!username || !number || !email || !message) {
+      setResponseText('Please fill in all input fields.');
+      setResponseColor('red');
+      setTimeout(() => {
+        setResponseText('');
+      }, 3000); 
+      return; 
+    }
 
-        // axios.post('http://3.109.49.36:3000/insert', data, {
-          axios.post('https://www.lingagranites.com/insert', data, {   
+    const data = {
+      name: username,
+      number: number,
+      email: email,
+      message: message
+    };
 
-        headers : {
-          "Content-Type" : "application/json"
+    axios
+      .post('https://www.lingagranites.com/insert', data, {
+        headers: {
+          'Content-Type': 'application/json'
         }
-        
-      }).then((res)=>{   
-        console.log(res);        
-        window.alert('Message sent successfully!');
-       
-      }).catch((err)=>{
+      })
+      .then((res) => {
+        console.log(res);
+        setResponseText('Message sent successfully!');
+        setResponseColor('black'); 
+        resetForm();
+        setTimeout(() => {
+          setResponseText('');
+        }, 5000); 
+      })
+      .catch((err) => {
         console.log(err);
-        window.alert('Error occurs in sending Message...!!!');
+        setResponseText('Error occurs in sending Message...!!!');
+        setResponseColor('red'); 
       });
+  };
 
-  }
+  const resetForm = () => {
+    setUsername('');
+    setNumber('');
+    setEmail('');
+    setMessage('');
+  };
+
+  const [responseMessage, setResponseMessage] = useState('');
 
   return (
     <div className="contact_main_div">
@@ -58,19 +81,68 @@ const ContactForm = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form_input_div">
-            <input type="text" onChange={(e)=>{setUsername(e.target.value)}}  autoComplete="off" name="name" placeholder="Name" className="insideinput" />
+            <input
+              type="text"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              autoComplete="off"
+              name="name"
+              placeholder="Name"
+              className="insideinput"
+              value={username}
+            />
           </div>
           <div className="form_input_div">
-            <input type="number" onChange={(e)=>{setNumber(e.target.value)}}  autoComplete="off" name="number" placeholder="Number" className="insideinput"/>
+            <input
+              type="number"
+              onChange={(e) => {
+                setNumber(e.target.value);
+              }}
+              autoComplete="off"
+              name="number"
+              placeholder="Number"
+              className="insideinput"
+              value={number}
+            />
           </div>
           <div className="form_input_div">
-            <input type="email" onChange={(e)=>{setEmail(e.target.value)}}  autoComplete="off" name="email" placeholder="Email" className="insideinput" />
+            <input
+              type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              autoComplete="off"
+              name="email"
+              placeholder="Email"
+              className="insideinput"
+              value={email}
+            />
           </div>
           <div className="form_input_div">
-            <input type="text" onChange={(e)=>{setMessage(e.target.value)}}  autoComplete="off" name="message" placeholder="Message" className="insideinput"/>
+            <input
+              type="text"
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
+              autoComplete="off"
+              name="message"
+              placeholder="Message"
+              className="insideinput"
+              value={message}
+            />
           </div>
           <div className="form_input_div">
-            <input type="submit" value="Submit" className="insideinput" style={{backgroundColor: "lightskyblue",cursor:"pointer"}} />
+          <input
+              type="submit"
+              value={responseText ? responseText : 'Submit'}
+              className="insideinput"
+              style={{
+                backgroundColor: 'lightskyblue',
+                cursor: 'pointer',
+                color: responseColor ? responseColor : 'black'
+              }}
+            />
           </div>
         </form>
       </div>
@@ -79,3 +151,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
